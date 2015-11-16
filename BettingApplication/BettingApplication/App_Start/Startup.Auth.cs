@@ -54,9 +54,9 @@ namespace BettingApplication
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "770192666459034",
+              appSecret: "ac48c0e05d06eca95ca9b55616ec9d3a");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
