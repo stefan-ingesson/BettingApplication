@@ -4,23 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace BettingApplication.Controllers
 {
     public class HomeController : Controller
     {
-
+  
         private readonly SoccerApi.SoccerRestService game = new SoccerApi.SoccerRestService();
-        
-        public ActionResult GetSoccerApi()
-        {
-            return View("index", game.GetSoccerApi());
-        } 
-
 
         public ActionResult Index()
         {
-            return View();
+            return View(game);
         }
 
         public ActionResult About()
