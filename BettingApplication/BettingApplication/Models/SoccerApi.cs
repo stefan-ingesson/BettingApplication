@@ -17,12 +17,6 @@ namespace BettingApplication.Scripts
 
     public class SoccerRestService
     {
-      static Uri uri = new Uri(@"http://api.football-data.org/alpha/fixtures/133566");
-      static WebRequest webRequest = WebRequest.Create(uri);
-      static WebResponse response = webRequest.GetResponse();
-      static StreamReader streamReader = new StreamReader(response.GetResponseStream());
-      String responseData = streamReader.ReadToEnd();
-
       //private readonly string uri = "http://api.football-data.org/alpha/soccerseasons/356/fixtures";
 
       //public List<SoccerModel> GetSoccerApi()

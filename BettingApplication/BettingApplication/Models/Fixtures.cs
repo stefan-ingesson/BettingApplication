@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +9,10 @@ namespace BettingApplication.Models
 {
   public class Fixtures
   {
+    public class FixtureEntities : DbContext
+    {
+      public DbSet<Fixture> Fixtures { get; set; }
+    }
 
     public class Self
     {
@@ -44,6 +50,7 @@ namespace BettingApplication.Models
 
     public class Fixture
     {
+      public int id { get; set; }
       public Links _links { get; set; }
       public string date { get; set; }
       public object status { get; set; }

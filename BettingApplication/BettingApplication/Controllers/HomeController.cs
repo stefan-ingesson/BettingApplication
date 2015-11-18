@@ -1,9 +1,16 @@
-﻿using BettingApplication.Scripts;
+﻿using System.IO;
+using System.Net;
+using BettingApplication.Models;
+using BettingApplication.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BettingApplication.Controllers.Api;
 using Newtonsoft.Json;
 
 namespace BettingApplication.Controllers
@@ -11,11 +18,9 @@ namespace BettingApplication.Controllers
     public class HomeController : Controller
     {
   
-        private readonly SoccerApi.SoccerRestService game = new SoccerApi.SoccerRestService();
-
         public ActionResult Index()
         {
-            return View(game);
+            return View();
         }
 
         public ActionResult About()
@@ -30,6 +35,13 @@ namespace BettingApplication.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult MatchApi()
+        {
+          Task<List<Fixtures.Fixture>> task = new Task<List<Fixtures.Fixture>>(GetTheApi());
+
+          return View(task);
         }
     }
 }
