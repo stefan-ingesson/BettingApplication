@@ -26,5 +26,6 @@ namespace BettingApplication.Controllers
 
             return View();
         }
+      
     }
 }
