@@ -5,21 +5,35 @@
 
 <h2>MatchApi</h2>
 
+<div>
+  <div id="ajaxDiv">
+  </div>
+</div>
+
 <script>
-  $.ajax({
-    dataType: 'json',
-    type: 'GET',
-  }).done(function (response) {
-    
-    + data[i].homeTeamName + data[i].awayTeamName + data[i].result .appendTo("#tdFixture");
-    
-    var regex = /.*?(\d+)$/; // the ? makes the first part non-greedy
-    var res = regex.exec(response.fixtures[0]._links.awayTeam.href);
-    var teamId = res[1];
-    console.log(teamId);
+  jQuery(document).ready(function($){
+    $.getJSON("http://localhost:55002/Api/game/1", null, function (data) {
+      var div = $('#ajaxDiv');
+      div.html("<br/> " + "Show games " + "<br/>");
+      $.each(data, function (i, item) {
+      showGame(div, item);
+      });
+    });
   });
+
+  function showGame(div, item) {
+    div.append("<br/>" + "Home Team: " + item.homeTeamName + " Goals " + item.result.goalsHomeTeam + "= Away Team: " + item.awayTeamName + " Goals " + item.result.goalsAwayTeam);
+    div.append("<br/>" + "   " + "Result: " + item.matchday);
+    $.each(item.result, function (i, addr) {
+      printResult(div, addr);
+    });
+  }
+
+  function printResult(div, item) {
+    div.append("<br/>" + "   " + "Result: " + item.result);
+  }
 </script>
 
-
+  
 
 

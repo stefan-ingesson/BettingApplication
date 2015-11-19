@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace BettingApplication.Models
 {
   public class Fixtures
   {
+    public Fixture fixture { get; set; }
+    public Head2head head2head { get; set; }
+
     public class FixtureEntities : DbContext
     {
       public DbSet<Fixture> Fixtures { get; set; }
@@ -299,12 +298,5 @@ namespace BettingApplication.Models
       public LastWinAwayTeam lastWinAwayTeam { get; set; }
       public List<Fixture2> fixtures { get; set; }
     }
-
-    public class RootObject
-    {
-      public Fixture fixture { get; set; }
-      public Head2head head2head { get; set; }
-    }
-
   }
 }
