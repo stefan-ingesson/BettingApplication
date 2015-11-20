@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -13,13 +14,13 @@ namespace BettingApplication.Controllers.Api
     private readonly Fixtures.FixtureEntities _db = new Fixtures.FixtureEntities();
 
     [HttpGet]
-    public JsonResult<Fixtures> GetTheApi(int id)
+    public JsonResult<List<Fixtures.Fixture>> GetTheApi(int id)
     {
       var client = new HttpClient();
 
       var game = new HttpRequestMessage
       {
-        RequestUri = new Uri("http://api.football-data.org/alpha/fixtures/133566"),
+        RequestUri = new Uri("http://api.football-data.org/v1/soccerseasons/398/fixtures?matchday=11"),
         Method = HttpMethod.Get
       };
 
@@ -34,9 +35,9 @@ namespace BettingApplication.Controllers.Api
         throw new ArgumentException();
       }
 
-      var fixture = JsonConvert.DeserializeObject<Fixtures>(response.Content.ReadAsStringAsync().Result);
+      var fixtures = JsonConvert.DeserializeObject<Fixtures>(response.Content.ReadAsStringAsync().Result);
 
-      return Json(fixture);
+      return Json(fixtures.fixtures);
     }
   }
 }
