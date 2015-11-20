@@ -8,6 +8,7 @@ namespace BettingApplication.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        
     }
 
     public class ExternalLoginListViewModel
@@ -109,4 +110,18 @@ namespace BettingApplication.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+    public class FacebookViewModel
+    {
+        [Required]
+        [Display(Name = "name")]
+        public string Name { get; set; }
+        public string ImageURL { get; set; }
+        public string Age { get; set; }
+        public string City { get; set; }
+        public string About_me { get; set; }
+        public FacebookViewModel() { }
+       
+    }
+   
+
 }
