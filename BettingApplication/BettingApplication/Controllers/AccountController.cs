@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using BettingApplication.Models;
 using Facebook;
 using System.Collections.Generic;
+using System.Net;
 
 namespace BettingApplication.Controllers
 {
@@ -424,7 +425,7 @@ namespace BettingApplication.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.Email };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -480,10 +481,16 @@ namespace BettingApplication.Controllers
                 // Retrieve the existing claims for the user and add the FacebookAccessTokenClaim
                 var currentClaims = await UserManager.GetClaimsAsync(user.Id);
                 var facebookAccessToken = claimsIdentity.FindAll("FacebookAccessToken").First();
+                if (currentClaims.Count() > 0)
+                {
+                    await UserManager.RemoveClaimAsync(user.Id, facebookAccessToken);
+                }
                 if (currentClaims.Count() <= 0)
                 {
                     await UserManager.AddClaimAsync(user.Id, facebookAccessToken);
+                   
                 }
+              
             }
         }
 
@@ -498,8 +505,10 @@ namespace BettingApplication.Controllers
     dynamic myInfo = fb.Get("/me");
     facebook.ImageURL = @"http://graph.facebook.com/" + myInfo.id + "/picture";
     facebook.Name = myInfo.name;
-    facebook.Birthday = myInfo.birthday;
-    facebook.Location = myInfo.location;
+    facebook.City = facebook.City;
+    facebook.Age = facebook.Age;
+    facebook.About_me = facebook.About_me;
+    
    
 
     return View(facebook);
@@ -543,6 +552,23 @@ namespace BettingApplication.Controllers
             base.Dispose(disposing);
         }
 
+           [HttpPost]
+    public ActionResult ProfileEdit([Bind]FacebookViewModel model)
+    {
+        var profile = new ApplicationDbContext();
+        if (Request.Form["accountprofileedit-submit"] != null)
+        {
+            if (ModelState.IsValid)
+            {
+                // logic to store form data in DB
+
+                
+
+               return RedirectToAction("FacebookInfo");
+            }
+        }
+        return RedirectToAction("FacebookInfo");
+    }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

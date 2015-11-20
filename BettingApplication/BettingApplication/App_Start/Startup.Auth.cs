@@ -57,11 +57,6 @@ namespace BettingApplication
 
             var x = new FacebookAuthenticationOptions();
             x.Scope.Add("email");
-            x.Scope.Add("user_birthday");
-            x.Scope.Add("user_about_me");
-            x.Scope.Add("user_friends");
-            x.Scope.Add("user_location");
-            x.Scope.Add("user_photos");
             x.AppId = "770192666459034";
             x.AppSecret = "ac48c0e05d06eca95ca9b55616ec9d3a";
             x.Provider = new FacebookAuthenticationProvider()
