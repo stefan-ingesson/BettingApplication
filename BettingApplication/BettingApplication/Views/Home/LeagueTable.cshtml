@@ -1,8 +1,43 @@
-﻿@model IEnumerable<BettingApplication.Models.LeagueTable>
+﻿@*@model IEnumerable<BettingApplication.Models.LeagueTable>
 
 @{
     ViewBag.Title = "LeagueTable";
 }
+
+<script>
+    $.ajax({
+        headers: { 'X-Auth-Token': '043d250ffaea4df7a21055ab5f774c34' },
+        url: 'http://api.football-data.org/alpha/soccerseasons/398/leagueTable',
+        dataType: 'json',
+        type: 'GET',
+        //}).done(function (response) {
+        //    // do something with the response, e.g. isolate the id of a linked resource        
+        //    var regex = /.*?(\d+)$/; // the ? makes the first part non-greedy
+        //    var res = regex.exec(response.fixtures[0]._links.awayTeam.href);
+        //    var teamId = res[1];
+        //    console.log(teamId);
+        //})
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("List", "Packages")',
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $.each(result.data, function (key, val) {
+                    var str = val.packageName;
+                    $('<li/>', { text: str })
+                        .appendTo($('#tables'));
+                });
+            }
+        });
+    });
+</script>
+
+
 
 <h2>LeagueTable</h2>
 
@@ -11,17 +46,33 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teamName)
+        </th>
+        
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.position)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.teamName)
+            </td>
+           
 
-</table>
+        </tr>
+    }
+
+</table>*@
+
+
+
+
+

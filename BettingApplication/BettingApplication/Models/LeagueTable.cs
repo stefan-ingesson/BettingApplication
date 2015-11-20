@@ -1,12 +1,33 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace BettingApplication.Models
 {
+    //[DataContract]
     public class LeagueTable
     {
+
+
+
+        //[DataMember]
+        //public Links _links { get; set; }
+
+        //public string leagueCaption { get; set; }
+
+        //public int matchday { get; set; }
+
+        //public Standing standing { get; set; }
+
+        public List<Standing> standing { get; set; }
+
+
+
+
+
 
         public class Links
         {
@@ -42,6 +63,8 @@ namespace BettingApplication.Models
             public int losses { get; set; }
         }
 
+
+
         public class Standing
         {
             public Links2 _links { get; set; }
@@ -59,13 +82,9 @@ namespace BettingApplication.Models
             public Away away { get; set; }
         }
 
-        public class RootObject
-        {
-            public Links _links { get; set; }
-            public string leagueCaption { get; set; }
-            public int matchday { get; set; }
-            public List<Standing> standing { get; set; }
-        }
+
+
+
 
     }
 }
