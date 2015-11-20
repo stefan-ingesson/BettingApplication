@@ -258,10 +258,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
 <<<<<<< HEAD
     <Content Include="Views\Home\MatchApi.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\UpcomingGames.cshtml" />
 =======
     <Content Include="Views\Account\FacebookInfo.cshtml" />
 >>>>>>> refs/remotes/origin/dev
+=======
+>>>>>>> parent of 5c6386d... Andreas-Final-Api
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
