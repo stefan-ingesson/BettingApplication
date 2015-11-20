@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using BettingApplication.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace BettingApplication
 {
@@ -54,9 +55,31 @@ namespace BettingApplication
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "770192666459034",
-              appSecret: "ac48c0e05d06eca95ca9b55616ec9d3a");
+            var x = new FacebookAuthenticationOptions();
+            x.Scope.Add("email");
+            x.Scope.Add("user_birthday");
+            x.Scope.Add("user_about_me");
+            x.Scope.Add("user_friends");
+            x.Scope.Add("user_location");
+            x.Scope.Add("user_photos");
+            x.AppId = "770192666459034";
+            x.AppSecret = "ac48c0e05d06eca95ca9b55616ec9d3a";
+            x.Provider = new FacebookAuthenticationProvider()
+            {
+                OnAuthenticated = async context =>
+{
+    //Get the access token from FB and store it in the database and
+    //use FacebookC# SDK to get more information about the user
+    context.Identity.AddClaim(
+    new System.Security.Claims.Claim("FacebookAccessToken",
+                                         context.AccessToken));
+}
+            };
+            x.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
+            app.UseFacebookAuthentication(x);
+            //app.UseFacebookAuthentication(
+            //   appId: "770192666459034",
+            //  appSecret: "ac48c0e05d06eca95ca9b55616ec9d3a");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
