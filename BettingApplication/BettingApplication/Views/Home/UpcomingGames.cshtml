@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BettingApplication.Models.Fixtures.Fixture>
+  
+@{
+  ViewBag.Title = "UpcomingGames";
+}
+
+<h2>Upcoming matches</h2>
+
+<div class="well-sm">
+  <table class="table table-striped">
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.homeTeamName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.awayTeamName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.date)
+      </th>
+      <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.homeTeamName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.awayTeamName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.date)
+        </td>
+      </tr>
+    }
+  </table>
+</div>

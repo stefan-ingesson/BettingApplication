@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
 namespace BettingApplication.Models
@@ -50,17 +51,22 @@ namespace BettingApplication.Models
 
     public class Result
     {
-      public int goalsHomeTeam { get; set; }
-      public int goalsAwayTeam { get; set; }
+      [Display(Name = "")]
+      public int? goalsHomeTeam { get; set; }
+      [Display(Name = "")]
+      public int? goalsAwayTeam { get; set; }
     }
 
     public class Fixture
     {
       public Links _links { get; set; }
+        [Display(Name = "Date")]
       public string date { get; set; }
       public string status { get; set; }
       public int matchday { get; set; }
+        [Display(Name="Home")]
       public string homeTeamName { get; set; }
+        [Display(Name = "Away")]
       public string awayTeamName { get; set; }
       public Result result { get; set; }
     }

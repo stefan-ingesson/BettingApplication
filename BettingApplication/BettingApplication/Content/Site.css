@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+#current {
+  width: 500px;
+}
+
+#current > table > tbody > tr:nth-child(2) > td:nth-child(1) {
+  width: 200px;
+}
+
+#current > table > tbody > tr:nth-child(2) > td:nth-child(2) {
+  width: 30px;
+}
+#current > table > tbody > tr:nth-child(2) > td:nth-child(3) {
+  width: 40px;
+}
+#current > table > tbody > tr:nth-child(2) > td:nth-child(4) {
+  width: 200px;
+}
