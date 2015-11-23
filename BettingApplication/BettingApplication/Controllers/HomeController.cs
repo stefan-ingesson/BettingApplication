@@ -1,6 +1,6 @@
 ﻿
 using BettingApplication.Models;
-using BettingApplication.Services;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -61,15 +61,11 @@ namespace BettingApplication.Controllers
 
             var client = new HttpClient();
 
-        
-
-
             HttpRequestMessage table = new HttpRequestMessage
             {
                 RequestUri = new Uri("http://api.football-data.org/alpha/soccerseasons/398/leagueTable"),
                 Method = HttpMethod.Get
             };
-
 
 
             #region Den här fungerar inte!
@@ -86,9 +82,8 @@ namespace BettingApplication.Controllers
                 throw new ArgumentException();
             }
 
-            LeagueTable leagueTable = JsonConvert.DeserializeObject<LeagueTable>(response.Content.ReadAsStringAsync().Result);
-                
-            return View(leagueTable.standing);
+            LeagueTable leagueTable = JsonConvert.DeserializeObject<LeagueTable>(response.Content.ReadAsStringAsync().Result);              
+            return View("ListTable",leagueTable.standing);
 
         }
 
