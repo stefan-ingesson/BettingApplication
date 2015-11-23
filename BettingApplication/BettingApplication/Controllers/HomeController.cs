@@ -69,10 +69,10 @@ namespace BettingApplication.Controllers
 
 
             #region Den här fungerar inte!
-            //table.Headers.Authorization = new AuthenticationHeaderValue("X-Auth-Token", "94212a25154c472696f2be2ee25e9691");
+            //table.Headers.Authorization = new AuthenticationHeaderValue("X-Auth-Token", "insert token here");
             #endregion
 
-            table.Headers.Add("X-Auth-Token", "94212a25154c472696f2be2ee25e9691");
+            table.Headers.Add("X-Auth-Token", "insert token here");
 
             var response = client.SendAsync(table).Result;
 
