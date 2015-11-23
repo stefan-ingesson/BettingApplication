@@ -42,18 +42,6 @@ namespace BettingApplication.Controllers
         }
 
 
-
-        //private RestService service = new RestService();
-
-        //public async Task<ActionResult> ListTable()
-        //{
-        //    Task<List<LeagueTable>> task = service.GetTablesAsync();
-        //    return View(await service.GetTablesAsync());
-        //}
-
-
-
-
     
         public ViewResult ListTable()
         {
@@ -90,62 +78,5 @@ namespace BettingApplication.Controllers
    
 
 
-
-        //public ActionResult ListTable()
-        //{
-        //    var list = new List<LeagueTable>();
-
-        //    return View(list);
-        //}
-
-        //private LeagueTableREST table = new LeagueTableREST();
-
-
-        //public string ListTable()
-        //{
-        //    var client = new HttpClient();
-        //    HttpRequestMessage message = new HttpRequestMessage();
-        //    message.RequestUri = new Uri("http://api.football-data.org/alpha/soccerseasons/398/leagueTable");
-        //    message.Method = HttpMethod.Get;
-        //    message.Headers.Authorization = new AuthenticationHeaderValue("X-Auth-Token", "3a5878e758b14d71bd774070afd07d69");
-        //    message.Content = new StringContent("grant_type=client_credentials", Encoding.UTF8);
-        //    message.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-
-        //    var response = client.SendAsync(message).Result;
-        //    if (response.StatusCode != HttpStatusCode.OK)
-        //    {
-        //        return response.Content.ReadAsStringAsync().Result;
-        //    }
-
-        //    LeagueTable leagueTable = JsonConvert.DeserializeObject<LeagueTable>(response.Content.ReadAsStringAsync().Result);
-
-        //    return View();
-        //}
-
-   
-    
-
-
-        //private LeagueTableREST table = new LeagueTableREST();
-        //public ActionResult LeagueTable()
-        //{
-        //    Uri uri = new Uri(@"http://api.football-data.org/alpha/soccerseasons/398/leagueTable");
-        //    WebRequest webRequest = WebRequest.Create(uri);
-        //    WebResponse response = webRequest.GetResponse();
-        //    StreamReader streamReader = new StreamReader(response.GetResponseStream());
-        //    String responseData = streamReader.ReadToEnd();
-        //    var outObject = JsonConvert.DeserializeObject<BettingApplication.Models.LeagueTable>(responseData);
-        //    return View(responseData);
-        //    //return View("LeagueTable", table.GetLeagueTable());
-        //}
-
-
-        //private FootballGameREST game = new FootballGameREST();
-
-
-        //public ActionResult FootballGame()
-        //{
-        //    return View("FootballGame", game.GetFootballGames());
-        //}
     }
 }
