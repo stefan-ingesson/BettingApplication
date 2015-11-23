@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using BettingApplication.Models;
 using Newtonsoft.Json;
 
@@ -10,6 +11,8 @@ namespace BettingApplication.Controllers
 {
   public class HomeController : Controller
   {
+    private readonly ApplicationDbContext db = new ApplicationDbContext();
+
     public ActionResult Index()
     {
       return View();
@@ -56,7 +59,8 @@ namespace BettingApplication.Controllers
       return View(fixtures.fixtures);
     }
 
-    public ActionResult UpcomingGames()
+    //Upcoming Games in patial views
+    public ActionResult _UpcomingGames()
     {
       var client = new HttpClient();
 
@@ -66,7 +70,6 @@ namespace BettingApplication.Controllers
         Method = HttpMethod.Get
       };
 
-      //game.Headers.Authorization = new AuthenticationHeaderValue("X-Auth-Token", "3a5878e758b14d71bd774070afd07d69");
       game.Headers.Add("X-Auth-Token", "3a5878e758b14d71bd774070afd07d69");
 
       HttpResponseMessage response = client.SendAsync(game).Result;
@@ -79,7 +82,12 @@ namespace BettingApplication.Controllers
 
       var fixtures = JsonConvert.DeserializeObject<Fixtures>(response.Content.ReadAsStringAsync().Result);
 
-      return View(fixtures.fixtures);
+      return PartialView(fixtures.fixtures);
+    }
+
+    public ActionResult PlaceBets()
+    {
+      return View();
     }
   }
 }

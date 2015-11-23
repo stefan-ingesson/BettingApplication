@@ -11,7 +11,7 @@ namespace BettingApplication.Controllers.Api
 {
   public class GameController : ApiController
   {
-    private readonly Fixtures.FixtureEntities _db = new Fixtures.FixtureEntities();
+    private readonly ApplicationDbContext db = new ApplicationDbContext();
 
     [HttpGet]
     public JsonResult<List<Fixtures.Fixture>> GetTheApi(int id)

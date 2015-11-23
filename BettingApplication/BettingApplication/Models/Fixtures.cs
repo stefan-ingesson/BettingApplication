@@ -6,7 +6,7 @@ namespace BettingApplication.Models
 {
   public class Fixtures
   {
-    public class FixtureEntities : DbContext
+    public class ApplicationDbContext : DbContext
     {
       public DbSet<Fixture> Fixtures { get; set; }
     }
@@ -69,6 +69,12 @@ namespace BettingApplication.Models
         [Display(Name = "Away")]
       public string awayTeamName { get; set; }
       public Result result { get; set; }
+      [Display(Name = "1")]
+      public bool HomeTeamWins {get; set; }
+      [Display(Name = "X")]
+      public bool Draw { get; set; }
+      [Display(Name = "2")]
+      public bool AwayTeamWins { get; set; }
     }
 
     //public class RootObject

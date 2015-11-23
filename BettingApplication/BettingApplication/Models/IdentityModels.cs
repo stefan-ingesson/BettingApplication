@@ -21,7 +21,8 @@ namespace BettingApplication.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            //: base("DefaultConnection", throwIfV1Schema: false)
+        : base("Bet4honorDb", throwIfV1Schema: false)
         {
         }
 
@@ -29,5 +30,7 @@ namespace BettingApplication.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<BettingApplication.Models.UserDbTest> UserDbTests { get; set; }
     }
 }
