@@ -497,7 +497,8 @@ namespace BettingApplication.Controllers
         //GET: Account/FacebookInfo
         [Authorize]
         public async Task<ActionResult> FacebookInfo()
-{
+        {
+            var profile = new ApplicationDbContext();
             var facebook = new FacebookViewModel();
     var claimsforUser = await UserManager.GetClaimsAsync(User.Identity.GetUserId());
     var access_token = claimsforUser.FirstOrDefault(x => x.Type == "FacebookAccessToken").Value;
@@ -505,9 +506,9 @@ namespace BettingApplication.Controllers
     dynamic myInfo = fb.Get("/me");
     facebook.ImageURL = @"http://graph.facebook.com/" + myInfo.id + "/picture";
     facebook.Name = myInfo.name;
-    facebook.City = facebook.City;
-    facebook.Age = facebook.Age;
-    facebook.About_me = facebook.About_me;
+    facebook.City = profile.City;
+    facebook.Age = profile.Age;
+    facebook.About_me = profile.About_me;
     
    
 
@@ -561,7 +562,11 @@ namespace BettingApplication.Controllers
             if (ModelState.IsValid)
             {
                 // logic to store form data in DB
-
+                profile.City = model.City;
+                profile.Age = model.Age;
+                profile.About_me = model.About_me;
+                profile.SaveChanges();
+                
                 
 
                return RedirectToAction("FacebookInfo");

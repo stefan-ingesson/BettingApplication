@@ -24,11 +24,16 @@ namespace BettingApplication.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            
         }
 
         public static ApplicationDbContext Create()
         {
+
             return new ApplicationDbContext();
         }
+          public string Age { get; set; }
+        public string City { get; set; }
+        public string About_me { get; set; }
     }
 }
