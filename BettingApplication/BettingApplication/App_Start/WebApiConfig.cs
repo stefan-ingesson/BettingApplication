@@ -16,12 +16,15 @@ namespace BettingApplication
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+<<<<<<< HEAD
 
             config.Routes.MapHttpRoute(
 name: "Api",
 routeTemplate: "api/{controller}/{action}/{id}",
 defaults: new { id = RouteParameter.Optional }
 );
+=======
+>>>>>>> refs/remotes/origin/Api-Andreas
         }
     }
 }
