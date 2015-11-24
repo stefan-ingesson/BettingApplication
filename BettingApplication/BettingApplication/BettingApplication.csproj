@@ -204,6 +204,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Fixtures.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LeagueTable.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserDbTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +280,7 @@
     <Content Include="Views\UserDbTests1\Index.cshtml" />
     <Content Include="Views\Home\PlaceBets.cshtml" />
     <Content Include="Views\Shared\_UpcomingGames.cshtml" />
+    <Content Include="Views\Home\ListTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
