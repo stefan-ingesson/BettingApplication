@@ -8,6 +8,15 @@ namespace BettingApplication.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly SoccerApi.SoccerRestService game = new SoccerApi.SoccerRestService();
+        
+        public ActionResult GetSoccerApi()
+        {
+            return View("index", game.GetSoccerApi());
+        } 
+
+
         public ActionResult Index()
         {
             return View();
